@@ -1,6 +1,6 @@
 import numpy as np
 import torch
-from mirror_learning import envs, drifts, neihbourhoods
+from mirror_learning.mirror_learning import envs, drifts, neihbourhoods
 
 
 

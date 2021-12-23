@@ -1,15 +1,18 @@
 import numpy as np
-from mirror_learning.trainer import *
-from mirror_learning.config import bandit_config, tabular_config, gridworld_config
+import torch
+from mirror_learning.mirror_learning.trainer import *
+from mirror_learning.mirror_learning.config import bandit_config, tabular_config, gridworld_config
 import matplotlib.pyplot as plt
 np.random.seed(0)
 torch.manual_seed(0)
+
+
 
 def main():
 
     plt.style.use('ggplot')
 
-    experiments = [("Bandit", bandit_config, 20), ("Tabular", tabular_config, 20), ("GridWorlds", gridworld_config, 20)]
+    experiments = [("Single-Step", bandit_config, 10), ("Tabular", tabular_config, 15), ("GridWorlds", gridworld_config, 15)]
 
     for name, config, n_iters in experiments:
         training = Training(config)
@@ -25,7 +28,7 @@ def main():
 
         print(v[-1, :])
 
-        plt.title("{} with Different Drifts and Neighbourhoods".format(name))
+        plt.title("{} with Different Drifts and KL-Neighbourhood".format(name))
         plt.xlabel("Iteration")
         plt.ylabel("Average Return")
         plt.legend()

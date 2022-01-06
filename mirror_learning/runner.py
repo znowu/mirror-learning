@@ -12,7 +12,8 @@ def main():
 
     plt.style.use('ggplot')
 
-    experiments = [("Single-Step", bandit_config, 10), ("Tabular", tabular_config, 15), ("GridWorlds", gridworld_config, 15)]
+    experiments = [("Single-Step", bandit_config, 50), ("Tabular", tabular_config, 50),
+                   ("GridWorld", gridworld_config, 50)]
 
     for name, config, n_iters in experiments:
         training = Training(config)
@@ -24,15 +25,15 @@ def main():
 
         for i in range(len(config["envs"])):
             plt.plot(v[:, i], label=config["drift_names"][i], c=config["colors"][i])
-            plt.plot(drift[:, i]+v[0, i], ".",  c=config["colors"][i])
+            plt.plot(drift[:, i]+v[0, i], ":",  c=config["colors"][i])
 
         print(v[-1, :])
 
-        plt.title("{} with Different Drifts and KL-Neighbourhood".format(name))
+        plt.title("{} with Different Drifts and Neighbourhoods".format(name))
         plt.xlabel("Iteration")
         plt.ylabel("Average Return")
         plt.legend()
-        fig.savefig("{} experiments KL".format(name))
+        fig.savefig("{} experiments".format(name))
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 import numpy as np
 import torch
-from mirror_learning.mirror_learning import envs, neihbourhoods, drifts
-from mirror_learning.mirror_learning.agents import *
+import envs, neihbourhoods, drifts
+from agents import *
 import torch.random
 np.random.seed(0)
 torch.manual_seed(0)

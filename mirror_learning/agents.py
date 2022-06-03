@@ -2,7 +2,7 @@ import numpy as np
 import torch
 import torch.optim as optim
 from torch.autograd import Variable
-from mirror_learning.mirror_learning.drifts import *
+from drifts import *
 np.random.seed(0)
 torch.manual_seed(0)
 

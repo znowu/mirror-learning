@@ -1,5 +1,5 @@
 import numpy as np
-from mirror_learning.mirror_learning.drifts import *
+from drifts import *
 
 def trivial_neighbourhood():
     return lambda pi1, pi2: True
